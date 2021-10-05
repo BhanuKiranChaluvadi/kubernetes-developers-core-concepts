@@ -1,0 +1,154 @@
+:imagesdir: images
+:couchbase_version: current
+:toc:
+:project_id: gs-how-to-kubernetes
+:icons: font
+:source-highlighter: prettify
+:tags: guides,meta
+
+= Getting started with kubernetes
+
+== RUN/CREATE/APPLY
+[source,bash]
+----
+kubectl run [podname] --image=nginx:alpine 
+----
+
+[source,bash]
+----
+kubectl create -f file.yml --dry-run --validate=true
+----
+
+[source,bash]
+----
+kubectl create -f file.yml --save-config
+----
+
+[source,bash]
+----
+kubectl create -f file.yml 
+----
+
+[source,bash]
+----
+kubectl apply -f file.yml
+----
+
+== GET INFO
+[source,bash]
+----
+kubectl get all
+----
+
+[source,bash]
+----
+kubectl get pods
+----
+
+[source,bash]
+----
+kubectl get deployments
+----
+
+List all deployments and their labels
+[source,bash]
+----
+kubectl get deployments --show-labels
+----
+
+Get all deployments with a specific label
+[source,bash]
+----
+kubectl get deployments -l app=nginx
+----
+
+[source,bash]
+----
+kubectl get services
+----
+
+[source,bash]
+----
+kubectl get pods -o wide
+----
+
+[source,bash]
+----
+kubectl get pod [name-of-pod] -o yaml
+----
+
+== DESCRIBE
+[source,bash]
+----
+kubectl describe [pod | deployment] [pod-name | deployment-name]
+----
+
+== EDIT
+[source,bash]
+----
+kubectl edit -f [path-to-yml-file]
+----
+
+== Delete
+[source,bash]
+----
+kubectl delete pod [name-of-pod]
+----
+
+[source,bash]
+----
+kubectl delete deployment [name-of-deployment]
+----
+
+[source,bash]
+----
+kubectl delete service [name-of-service]
+----
+
+[source,bash]
+----
+kubectl delete -f [path-to-YAML-file]
+----
+
+== PORT FORWARD
+
+Listen on port 8080 locally and forward to port 80 in pod - `external port:Internal port`
+[source,bash]
+----
+kubectl port-forward pod/[pod-name] 8080:80
+----
+
+Listen on port 8080 locally and forward to Deployment's Pod
+[source,bash]
+----
+kubectl port-forward deployment/[deployment-name] 8080:80
+----
+
+Listen on port 8080 locally and forward to Service's Pod
+[source,bash]
+----
+kubectl port-forward service/[service-name] 8080
+----
+
+== SCALE
+
+[source,bash]
+----
+kubectl scale deployment [deployment-name] --replicas=5
+----
+
+[source,bash]
+----
+kubectl scale -f file.deployment.yml --replicas=5
+----
+
+== EXEC
+[source,bash]
+----
+kubectl exec [pod-name] -it sh
+----
+
+[source,bash]
+----
+kubectl exec [pod-name] -- curl -s http://podIP
+----
