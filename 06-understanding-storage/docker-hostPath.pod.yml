@@ -1,0 +1,31 @@
+apiVersion: v1 
+kind: Pod 
+metadata:
+  name: docker-volume
+spec: 
+  volumes: 
+  - name: docker-socket 
+    hostPath:
+      path: /var/run/docker.sock
+      type: Socket
+  containers: 
+  - name: docker 
+    image: docker 
+    command: ["sleep"] 
+    args: ["100000"]
+    volumeMounts: 
+    - name: docker-socket 
+      mountPath: /var/run/docker.sock 
+    resources:
+
+# Once Pod is created you can shell into it to run Docker commands:
+# kubectl exec [pod-name] -it sh
+
+# Valid types include
+# DirectoryOrCreate
+# Directory
+# FileOrCreate
+# File
+# Socket
+# CharDevice
+# BlockDevice
