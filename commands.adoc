@@ -28,6 +28,25 @@ kubectl create -f file.yml --save-config
 ----
 kubectl create -f file.yml 
 ----
+Create a secret and store securely in kubernetes
+[source,bash]
+----
+kubectl create secret generic [name] \
+    --from-literal=[key]=[value]
+----
+Create a secret from a file
+[source,bash]
+----
+kubectl create secret generic my-secret \
+    --from-file=ssh-privatekey=~/.ssh/id_rsa \
+    --from-file=ssh-publickey=~/.ssh/id_rsa.pub
+---- 
+Create a secret from a key pair
+[source,bash]
+----
+kubectl create secret tls tls-secret --cert=path/to/tls.cert
+    --key=path/to/tls.key
+---- 
 
 [source,bash]
 ----
@@ -75,6 +94,21 @@ kubectl get pods -o wide
 [source,bash]
 ----
 kubectl get pod [name-of-pod] -o yaml
+----
+
+[source,bash]
+----
+kubectl get cm [cm-name] -o yaml
+----
+
+[source,bash]
+----
+kubectl get secrets
+----
+
+[source,bash]
+----
+kubectl get secrets [secret-name] -o yaml
 ----
 
 == DESCRIBE
@@ -151,4 +185,27 @@ kubectl exec [pod-name] -it sh
 [source,bash]
 ----
 kubectl exec [pod-name] -- curl -s http://podIP
+----
+
+== CONFIGMAP
+Create a ConfigMap using data from a config file
+[source,bash]
+----
+kubectl create configmap [cm-name] --from-file=[path-to-file]
+----
+Create a ConfigMap from an env file
+[source,bash]
+----
+kubectl create configmap [cm-name] --from-env-file=[path-to-file]
+----
+Create a ConfigMap from individual data values
+[source,bash]
+----
+kubectl create configmap [cm-name]
+    --from-literal=apiUrl=https://my-api
+    --from-literal=otherKey=otherValue
+----
+Create from a ConfigMap manifest
+----
+kubectl create -f file.configmap.yml
 ----
