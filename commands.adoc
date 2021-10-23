@@ -209,3 +209,15 @@ Create from a ConfigMap manifest
 ----
 kubectl create -f file.configmap.yml
 ----
+
+== Deployment
+Record the deployment. `-f ./` implies deploy all possible files on the given path
+[source,bash]
+----
+kubectl create -f ./ --save-config --record
+----
+Deployment status
+[source,bash]
+----
+kubectl rollout status deployment [deployment-name]
+----
