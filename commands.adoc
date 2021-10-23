@@ -143,6 +143,11 @@ kubectl delete service [name-of-service]
 ----
 kubectl delete -f [path-to-YAML-file]
 ----
+Delete all kinds of service of the files in a given folder
+[source,bash]
+----
+kubectl delete -f [path-to-folder]
+----
 
 == PORT FORWARD
 
@@ -216,8 +221,34 @@ Record the deployment. `-f ./` implies deploy all possible files on the given pa
 ----
 kubectl create -f ./ --save-config --record
 ----
-Deployment status
+[source,bash]
+----
+kubectl apply -f file.deployment.yml --save-config --record
+----
+status
 [source,bash]
 ----
 kubectl rollout status deployment [deployment-name]
+----
+----
+kubectl rollout status -f file.deployment.yml
+----
+Get information about a deployment
+[source,bash]
+----
+kubectl rollout history deployment [deployment-name]
+----
+[source,bash]
+----
+kubectl rollout history deployment [deployment-name] --revision=2
+----
+Roll-back a deployment
+[source,bash]
+----
+kubectl rollout undo -f file.deployment.yml
+----
+Roll-back to a specific version
+[source,bash]
+----
+kubectl rollout undo deployment [deployment-name] --to-revision=2
 ----
