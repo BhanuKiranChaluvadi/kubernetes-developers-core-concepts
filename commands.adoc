@@ -35,6 +35,11 @@ Deploy everything(deployment, services etc) in a folder
 kubectl create -f <folder_path>  --save-config
 ----
 
+[source,bash]
+----
+kubectl apply -f file.yml
+----
+
 Dynamically pipe file output
 [source,bash]
 ----
@@ -63,10 +68,6 @@ kubectl create secret tls tls-secret --cert=path/to/tls.cert
     --key=path/to/tls.key
 ---- 
 
-[source,bash]
-----
-kubectl apply -f file.yml
-----
 
 == GET INFO
 [source,bash]
