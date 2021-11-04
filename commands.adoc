@@ -114,6 +114,11 @@ kubectl get pod [name-of-pod] -o yaml
 
 [source,bash]
 ----
+kubectl get job [name-of-job] -o yaml
+----
+
+[source,bash]
+----
 kubectl get cm [cm-name] -o yaml
 ----
 
@@ -125,6 +130,14 @@ kubectl get secrets
 [source,bash]
 ----
 kubectl get secrets [secret-name] -o yaml
+----
+
+== GET LOGS
+
+[source,bash]
+----
+kubectl get pods
+kubectl logs <pod> 
 ----
 
 == DESCRIBE
