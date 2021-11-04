@@ -28,6 +28,21 @@ kubectl create -f file.yml --save-config
 ----
 kubectl create -f file.yml 
 ----
+
+Deploy everything(deployment, services etc) in a folder 
+[source,bash]
+----
+kubectl create -f <folder_path>  --save-config
+----
+
+Dynamically pipe file output
+[source,bash]
+----
+export TARGET_ROLE=blue
+export IMAGE_VERSION=nginx-blue
+cat nginx.deployment.yml | sh config.sh | kubectl create --save-config -f -
+----
+
 Create a secret and store securely in kubernetes
 [source,bash]
 ----
