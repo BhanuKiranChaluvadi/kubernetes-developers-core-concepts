@@ -140,6 +140,13 @@ kubectl get pods
 kubectl logs <pod> 
 ----
 
+== WATCH
+[source,bash]
+----
+kubectl get pods --watch
+----
+
+
 == DESCRIBE
 [source,bash]
 ----
