@@ -22,3 +22,7 @@ You can find his github page
     * https://kubernetes.io/docs/home/[kubernetes home]
     * https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/[install kubernetes on linux]
     * https://minikube.sigs.k8s.io/docs/start/[install miniKube]
+
+== Full blown example
+
+    * https://github.com/DanWahlin/CodeWithDanDockerServices[DockerServices]
