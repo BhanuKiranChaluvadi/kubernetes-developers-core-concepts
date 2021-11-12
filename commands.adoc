@@ -137,7 +137,11 @@ kubectl get secrets [secret-name] -o yaml
 [source,bash]
 ----
 kubectl get pods
-kubectl logs <pod> 
+kubectl logs [pod-name] 
+kubectl logs [pod-name] -c [container-name]
+kubectl logs -p [pod-name]
+# latch to the pod
+kubectl logs -f [pod-name]
 ----
 
 == WATCH
