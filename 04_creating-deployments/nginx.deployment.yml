@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: my-nginx
-        image: nginx:lpine
+        image: nginx:alpine
         ports:
         - containerPort: 80
         resources:
